@@ -1,0 +1,1 @@
+{"version":3,"file":"db-tables.config.js","sourceRoot":"","sources":["../../src/config/db-tables.config.ts"],"names":[],"mappings":";;;AAAa,QAAA,cAAc,GAAG;IAC5B,KAAK,EAAE,OAAO,CAAC,GAAG,CAAC,cAAc,IAAI,OAAO;IAC5C,aAAa,EAAE,OAAO,CAAC,GAAG,CAAC,sBAAsB,IAAI,cAAc;IACnE,QAAQ,EAAE,OAAO,CAAC,GAAG,CAAC,iBAAiB,IAAI,UAAU;IACrD,UAAU,EAAE,OAAO,CAAC,GAAG,CAAC,mBAAmB,IAAI,YAAY;CAC5D,CAAC"}

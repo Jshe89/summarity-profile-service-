@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12341234
+      POSTGRES_DB: profile
+    volumes:
+      - ../tmp/postgres/polen-db:/var/lib/postgresql/data
+    ports:
+      - 5551:5432

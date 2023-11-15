@@ -1,0 +1,39 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MyProfileUnionOutput = exports.MyProfileOutput = void 0;
+const graphql_1 = require("@nestjs/graphql");
+const error_output_1 = require("../../../shared/dto/error.output");
+const base_output_1 = require("../../../shared/dto/base.output");
+let MyProfileOutput = class MyProfileOutput extends base_output_1.BaseOutput {
+};
+exports.MyProfileOutput = MyProfileOutput;
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], MyProfileOutput.prototype, "email", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], MyProfileOutput.prototype, "firstName", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], MyProfileOutput.prototype, "lastName", void 0);
+__decorate([
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], MyProfileOutput.prototype, "title", void 0);
+exports.MyProfileOutput = MyProfileOutput = __decorate([
+    (0, graphql_1.ObjectType)()
+], MyProfileOutput);
+exports.MyProfileUnionOutput = (0, error_output_1.createUnionWithError)(MyProfileOutput);
+//# sourceMappingURL=my-profile.output.js.map

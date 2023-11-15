@@ -1,0 +1,132 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ErrorOutput {
+  id: String!
+  message: String!
+  type: String!
+}
+
+type ProfileOutput {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  firstName: String!
+  lastName: String!
+  title: String
+  isBlocked: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type MyProfileOutput {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  email: String!
+  firstName: String!
+  lastName: String!
+  title: String
+}
+
+type Query {
+  profileById(id: String!): ProfileOutputUnion!
+  myProfile: MyProfileOutputUnion!
+  profileSearch(query: String!): ProfileSearchOutputUnion!
+  myBlockedProfiles: MyBlockedUsersOutputUnion!
+  profileContacts(id: String!): ProfileContactsOutputUnion!
+  myProfileContacts: ProfileContactsOutputUnion!
+}
+
+union ProfileOutputUnion = ProfileOutput | ErrorListOutput
+
+type ErrorListOutput {
+  errors: [ErrorOutput!]!
+}
+
+union MyProfileOutputUnion = MyProfileOutput | ErrorListOutput
+
+union ProfileSearchOutputUnion = ProfileSearchOutput | ErrorListOutput
+
+type ProfileSearchOutput {
+  profiles: [ProfileOutput!]!
+}
+
+union MyBlockedUsersOutputUnion = MyBlockedUsersOutput | ErrorListOutput
+
+type MyBlockedUsersOutput {
+  blockedUsers: [MyProfileOutput!]!
+}
+
+union ProfileContactsOutputUnion = ProfileContactsOutput | ErrorListOutput
+
+type ProfileContactsOutput {
+  contacts: [ProfileOutput!]!
+}
+
+type Mutation {
+  signup(input: SignupInput!): SignupOutputUnion!
+  login(input: LoginInput!): LoginOutputUnion!
+  updateMyProfile(input: UpdateProfileInput!): MyProfileOutputUnion!
+  blockProfile(profileId: String!): BlockedUserOutputUnion!
+  unblockProfile(profileId: String!): UnblockedUserOutputUnion!
+  deleteContact(contactId: String!): DeleteContactOutputUnion!
+}
+
+union SignupOutputUnion = SignupOutput | ErrorListOutput
+
+type SignupOutput {
+  accessToken: String!
+  profile: MyProfileOutput!
+}
+
+input SignupInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  title: String
+}
+
+union LoginOutputUnion = LoginOutput | ErrorListOutput
+
+type LoginOutput {
+  accessToken: String!
+  profile: MyProfileOutput!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input UpdateProfileInput {
+  email: String
+  firstName: String
+  lastName: String
+  title: String
+}
+
+union BlockedUserOutputUnion = BlockedUserOutput | ErrorListOutput
+
+type BlockedUserOutput {
+  blocked: Boolean!
+}
+
+union UnblockedUserOutputUnion = UnblockedUserOutput | ErrorListOutput
+
+type UnblockedUserOutput {
+  unblocked: Boolean!
+}
+
+union DeleteContactOutputUnion = DeleteContactOutput | ErrorListOutput
+
+type DeleteContactOutput {
+  deleted: Boolean!
+}
